@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>TP 7</h1>
+    <p class="lead">Trabajo Practico Nº7 - Taller de computación VI</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Listado de articulos</h2>
+        <p><a class="btn btn-default" @Html.ActionLink("Ver >>", "ListarArticulos", "Articulos")</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Cargar articulos</h2>
+        <p><a class="btn btn-default" @Html.ActionLink("Cargar >>", "CargarArticulo", "Articulos")</a></p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Listado de facturas</h2>
+        <p><a class="btn btn-default" @Html.ActionLink("Ver >>", "ListarFacturas", "Facturas")</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Cargar facturas</h2>
+        <p><a class="btn btn-default" @Html.ActionLink("Cargar >>", "CargarFactura", "Facturas")</a></p>
+    </div>
+</div>

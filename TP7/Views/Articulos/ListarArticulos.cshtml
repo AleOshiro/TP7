@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TP7.Models.ArticulosModels>
+
+@{
+    ViewBag.Title = "ListarArticulos";
+}
+
+<h2>Listado de Articulos</h2>
+
+<p>
+    @Html.ActionLink("Cargar Articulo", "CargarArticulo", "Articulos")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarArticulo", new { id=item.Id }) |
+            @Html.ActionLink("Borrar", "EliminarArticulo", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("<< Volver", "Index", "Home")
+</div>
