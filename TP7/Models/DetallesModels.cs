@@ -12,8 +12,9 @@ namespace TP7.Models
 
         public DetallesModels() { }
 
-        public DetallesModels( int FacturaId, int ArticuloId, int Cantidad, double Precio)
+        public DetallesModels( int Id, int FacturaId, int ArticuloId, int Cantidad, double Precio)
         {
+            this._id = Id;
             this._facturaId = FacturaId;
             this._articuloId = ArticuloId;
             this._cantidad = Cantidad;
@@ -67,8 +68,6 @@ namespace TP7.Models
                 _cantidad = value;
             }
         }
-
-
 
         public double Precio
         {

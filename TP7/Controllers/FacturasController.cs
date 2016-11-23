@@ -12,6 +12,8 @@ namespace TP7.Controllers
     {
         Context context = new Context();
 
+        public object Diagnostic { get; private set; }
+
         // GET: Facturas
         public ActionResult Index()
         {
@@ -27,34 +29,24 @@ namespace TP7.Controllers
         // Cargar una factura
         public ActionResult CargarFactura()
         {
-            return View();
+            var factura = new FacturasModels();
+            factura.Detalle.Add(new DetallesModels());
+            factura.Detalle.Add(new DetallesModels());
+            factura.Detalle.Add(new DetallesModels());
+            factura.Detalle.Add(new DetallesModels());
+            factura.Detalle.Add(new DetallesModels());
+            return View(factura);
         }
 
         // Cargar una factura
         [HttpPost]
         public ActionResult CargarFactura(FacturasModels factura)
         {
+            factura.Detalle.ForEach(detalle => {
+                detalle.Precio = context.Articulo.Find(detalle.ArtciulosId).Precio * detalle.Cantidad;
+                factura.Total += detalle.Precio;
+            });
             context.Factura.Add(factura);
-            context.SaveChanges();
-            return RedirectToAction("ListarFacturas", "Facturas");
-        }
-
-        // Ver la factura a editar
-        public ActionResult EditarFactura(int id = 0)
-        {
-            FacturasModels factura = context.Factura.Find(id);
-            if (factura == null)
-            {
-                return HttpNotFound();
-            }
-            return View(factura);
-        }
-
-        // Editar factura
-        [HttpPost]
-        public ActionResult EditarFactura(FacturasModels factura)
-        {
-            context.Entry(factura).State = EntityState.Modified;
             context.SaveChanges();
             return RedirectToAction("ListarFacturas", "Facturas");
         }
@@ -79,5 +71,20 @@ namespace TP7.Controllers
             context.SaveChanges();
             return RedirectToAction("ListarFacturas", "Facturas");
         }
+
+        // Listado de Detalles
+        public ActionResult ListarDetalles()
+        {
+            return View(context.Detalle.ToList());
+        }
+
+        // Mostrar un detalle
+        public ActionResult MostrarDetalle(int id = 0)
+        {
+            FacturasModels fac = context.Factura.Find(id);
+            List<DetallesModels> listaDetalles = context.Detalle.Where(model => model.FacturaId == id).ToList();
+            return View(listaDetalles);
+        }
+    
     }
 }

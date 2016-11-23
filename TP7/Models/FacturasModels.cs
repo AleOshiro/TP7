@@ -13,13 +13,16 @@ namespace TP7.Models
         public double _Total;
         public List<DetallesModels> _Detalle;
 
-        public FacturasModels() { }
-
-        public FacturasModels(DateTime Fecha, double Total, List<DetallesModels> Detalle)
+        public FacturasModels() {
+            this._Detalle = new List<DetallesModels>();
+        }
+        
+        public FacturasModels(int id, DateTime Fecha, double Total)
         {
+            this._id = id;
             this._Fecha = Fecha;
             this._Total = Total;
-            this._Detalle = Detalle;
+            this._Detalle = new List<DetallesModels>();
         }
 
         public int Id
@@ -58,7 +61,7 @@ namespace TP7.Models
                 _Total = value;
             }
         }
-
+              
         public List<DetallesModels> Detalle
         {
             set
@@ -70,5 +73,6 @@ namespace TP7.Models
                 return _Detalle;
             }
         }
+
     }
 }

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TP7.Models.DetallesModels>
+
+@{
+    ViewBag.Title = "ListarDetalles";
+}
+
+<h2>Listar Detalles</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FacturaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtciulosId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FacturaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtciulosId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            $@Html.DisplayFor(modelItem => item.Precio)
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("<< Volver", "Index", "Home")
+</div>

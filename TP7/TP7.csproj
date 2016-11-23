@@ -279,9 +279,12 @@
     <Content Include="Views\Facturas\CargarFactura.cshtml" />
     <Content Include="Views\Facturas\EditarFactura.cshtml" />
     <Content Include="Views\Facturas\EliminarFactura.cshtml" />
+    <Content Include="Views\Facturas\ListarDetalles.cshtml" />
+    <Content Include="Views\Facturas\MostrarDetalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Contenedor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
